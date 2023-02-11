@@ -5,8 +5,8 @@ const AllPokemonsPage = () => {
   const pokemonsArray = pokemons.results
   return (
     <div className="gap-5 flex flex-wrap">
-      {pokemonsArray.map((pokemon) => (
-        <CardPokemon url={pokemon.url} />
+      {pokemonsArray.map(({ name, url }) => (
+        <CardPokemon url={url} key={name} />
       ))}
     </div>
   )

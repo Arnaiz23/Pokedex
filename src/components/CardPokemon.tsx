@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react"
-import pokemonResult from "@/mocks/pokemon-result.json"
 
 interface Props {
   url: string
@@ -28,7 +27,7 @@ const backgroundType = [
   },
 ]
 
-const CardPokemon = ({ url }: Props) => {
+export default function CardPokemon({ url }: Props) {
   const [pokemon, setPokemon] = useState()
   const [isMounted, setIsMounted] = useState(false)
   //const pokemon = pokemonResult
@@ -47,14 +46,16 @@ const CardPokemon = ({ url }: Props) => {
     fetchData()
   }, [])
 
+  const getBackground = (nameType, prop) => {
+    console.log("Function Render")
+    const typeBg = backgroundType.filter(({ type }) => type === nameType)
+    return typeBg.length > 0 ? typeBg[0][prop] : backgroundType[1].bg
+  }
+
   if (!isMounted) {
     return <h1>No pokemon</h1>
   }
 
-  const getBackground = (nameType, prop) => {
-    const typeBg = backgroundType.filter(({ type }) => type === nameType)
-    return typeBg.length > 0 ? typeBg[0][prop] : backgroundType[1].bg
-  }
   return (
     <div
       className={`w-52 rounded-md  relative flex flex-col justify-evenly items-center py-3 min-h-[300px]`}
@@ -77,7 +78,7 @@ const CardPokemon = ({ url }: Props) => {
       </h2>
       <div className="flex justify-center items-center gap-4">
         {pokemon?.types.map((type) => (
-          <p>{type.type.name}</p>
+          <p key={type.type.name}>{type.type.name}</p>
         ))}
       </div>
       <button
@@ -91,5 +92,3 @@ const CardPokemon = ({ url }: Props) => {
     </div>
   )
 }
-
-export default CardPokemon
