@@ -75,7 +75,7 @@ export default function CardPokemon({ url }: Props) {
   }
 
   if (!isMounted) {
-    return <h1>No pokemon</h1>
+    return <h2 className="text-white text-2xl">Loading....</h2>
   }
 
   return (

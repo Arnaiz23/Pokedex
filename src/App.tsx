@@ -1,6 +1,7 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom"
 
 import AllPokemonsPage from "@/pages/AllPokemons"
+import PokemonTitle from "./components/Icons/PokemonTitle"
 
 const router = createBrowserRouter([
   {
@@ -15,10 +16,8 @@ const router = createBrowserRouter([
 
 function App() {
   return (
-    <div className="flex justify-center items-center min-h-screen">
-      <h1 className="text-4xl text-white">
-        Hello world!! Welcome to the pokedex.
-      </h1>
+    <div className="flex flex-col justify-center items-center gap-20 min-h-screen w-full p-5">
+      <PokemonTitle />
       <RouterProvider router={router} />
     </div>
   )
