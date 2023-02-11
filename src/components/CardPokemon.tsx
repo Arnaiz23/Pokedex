@@ -27,8 +27,24 @@ const backgroundType = [
   },
 ]
 
+interface NameType {
+  name: string
+  url: string
+}
+
+interface Types {
+  slot: number
+  type: NameType
+}
+
+interface PokemonObject {
+  name: string
+  id: number
+  types: Types[]
+}
+
 export default function CardPokemon({ url }: Props) {
-  const [pokemon, setPokemon] = useState()
+  const [pokemon, setPokemon] = useState<PokemonObject | undefined>()
   const [isMounted, setIsMounted] = useState(false)
   //const pokemon = pokemonResult
 
@@ -38,7 +54,14 @@ export default function CardPokemon({ url }: Props) {
   const fetchData = async () => {
     const response = await fetch(url)
     const data = await response.json()
-    setPokemon(data)
+
+    const dataMapped: PokemonObject = {
+      name: data.name,
+      id: data.id,
+      types: data.types,
+    }
+
+    setPokemon(dataMapped)
     setIsMounted(true)
   }
 
@@ -46,8 +69,7 @@ export default function CardPokemon({ url }: Props) {
     fetchData()
   }, [])
 
-  const getBackground = (nameType, prop) => {
-    console.log("Function Render")
+  const getBackground = (nameType: string, prop: string) => {
     const typeBg = backgroundType.filter(({ type }) => type === nameType)
     return typeBg.length > 0 ? typeBg[0][prop] : backgroundType[1].bg
   }
@@ -60,12 +82,15 @@ export default function CardPokemon({ url }: Props) {
     <div
       className={`w-52 rounded-md  relative flex flex-col justify-evenly items-center py-3 min-h-[300px]`}
       style={{
-        backgroundColor: getBackground(pokemon.types[0].type.name, "bg"),
+        backgroundColor: getBackground(
+          pokemon?.types[0].type.name as string,
+          "bg"
+        ),
       }}
     >
       <picture className="w-24 overflow-hidden h-24 absolute -top-[43px] rounded-full flex items-center">
         <img
-          src={urlImage(pokemon?.name)}
+          src={urlImage(pokemon?.name as string)}
           alt={`front of ${pokemon?.name}`}
           className="w-full object-cover  bg-gray-50/50 block"
         />
@@ -77,14 +102,17 @@ export default function CardPokemon({ url }: Props) {
         {pokemon?.name}
       </h2>
       <div className="flex justify-center items-center gap-4">
-        {pokemon?.types.map((type) => (
+        {pokemon?.types?.map((type: Types) => (
           <p key={type.type.name}>{type.type.name}</p>
         ))}
       </div>
       <button
         className="rounded-full p-1 px-3 text-white text-sm shadow shadow-black"
         style={{
-          backgroundColor: getBackground(pokemon.types[0].type.name, "button"),
+          backgroundColor: getBackground(
+            pokemon?.types[0].type.name as string,
+            "button"
+          ),
         }}
       >
         Ver Gráfica
