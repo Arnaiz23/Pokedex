@@ -2,6 +2,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom"
 
 import AllPokemonsPage from "@/pages/AllPokemons"
 import PokemonTitle from "./components/Icons/PokemonTitle"
+import OnePokemonPage from "./pages/OnePokemon"
 
 const router = createBrowserRouter([
   {
@@ -10,7 +11,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/pokemon/:name",
-    element: <h1 className="text-white">Pokemon</h1>,
+    element: <OnePokemonPage />,
   },
 ])
 
