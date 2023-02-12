@@ -1,3 +1,4 @@
+// POKEMON INTERFACE
 interface NameType {
   name: string
   url: string

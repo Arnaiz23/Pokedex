@@ -23,40 +23,58 @@ export default function OnePokemonPage() {
   }
 
   return (
-    <>
-      <h1 className="text-white text-3xl">Pokemon {pokemon.name}</h1>
-      <p className="text-white">id: {pokemon.id}</p>
-      <p className="text-white">height: {pokemon.height * 10} cm</p>
-      <p className="text-white">weight: {(pokemon.weight * 100) / 1000} kg</p>
-      <div className="flex justify-evenly items-center gap-10">
-        <p className="text-white">Types:</p>
-        <ul className="text-white">
-          {pokemon.types.map((type) => (
-            <li className="list-disc">{type.type.name}</li>
-          ))}
-        </ul>
+    <div className="flex flex-col justify-evenly items-center gap-20 text-white w-[80%] mx-auto">
+      <h1 className="text-4xl capitalize">
+        {pokemon.name} #{pokemon.id}
+      </h1>
+      <div className="flex justify-center items-center gap-10 w-full">
+        <picture>
+          <img
+            src={urlImage}
+            alt={`pokemon ${pokemon.name}`}
+            className="w-96"
+          />
+        </picture>
+        <div className="flex flex-col justify-evenly items-center gap-10 w-[30%]">
+          <div className="w-full bg-[#30A7D7] min-h-[114px] rounded-xl flex justify-evenly items-center gap-10">
+            <div className="flex flex-col justify-evenly items-center text-xl">
+              <p className="font-bold">Height</p>
+              <p className="text-black">{pokemon.height * 10} cm</p>
+            </div>
+            <div className="flex flex-col justify-evenly items-center text-xl">
+              <p className=" font-bold">Weight</p>
+              <p className="text-black">{(pokemon.weight * 100) / 1000} kg</p>
+            </div>
+          </div>
+          <div className="flex justify-evenly items-center gap-5">
+            {pokemon.types.map((type) => (
+              <span className="bg-white rounded-full py-1 px-3 text-black">
+                {type.type.name}
+              </span>
+            ))}
+          </div>
+        </div>
       </div>
-      <div className="flex justify-evenly items-center gap-10">
-        <p className="text-white">Moves:</p>
-        <ul className="text-white">
-          {pokemon.moves.slice(0, 4).map((move) => (
-            <li className="list-decimal">{move.move.name}</li>
-          ))}
-        </ul>
-      </div>
-      <div className="flex justify-evenly items-center gap-10">
-        <p className="text-white">Stats:</p>
-        <ul>
+      <div className="w-full flex flex-col justify-evenly items-center gap-10">
+        <h2 className="text-3xl">Stats</h2>
+        <div className="w-9/12 bg-gray-700 flex flex-wrap justify-evenly items-center gap-5 p-3 rounded-lg">
           {pokemon.stats.map((stat) => (
-            <li className="text-white">
-              {stat.stat.name}:{stat.base_stat}
-            </li>
+            <span className="text-center">
+              <h3 className="text-xl capitalize">{stat.stat.name}</h3>
+              <h4 className="opacity-80">{stat.base_stat}</h4>
+            </span>
           ))}
-        </ul>
+        </div>
       </div>
-      <picture>
-        <img src={urlImage} alt={`pokemon ${pokemon.name}`} />
-      </picture>
-    </>
+
+      <div className="w-full flex flex-col justify-evenly items-center gap-10">
+        <h2 className="text-3xl">Moves</h2>
+        <div className="w-9/12 bg-gray-700 flex flex-wrap justify-evenly items-center gap-5 p-3 rounded-lg">
+          {pokemon.moves.slice(0, 4).map((move) => (
+            <p className="text-xl capitalize">{move.move.name}</p>
+          ))}
+        </div>
+      </div>
+    </div>
   )
 }
