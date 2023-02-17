@@ -1,10 +1,8 @@
 import { useParams } from "react-router-dom"
-import { useEffect, useState } from "react"
 
-import { PokemonObject } from "@/interfaces/types"
 import GridContainerData from "@/components/GridContainerData"
 import ContainerPokemonData from "@/components/ContainerPokemonData"
-import { onePokemonService } from "@/services/pokemon"
+import usePokemon from "@/hooks/usePokemon"
 
 type PokemonParams = {
   name: string
@@ -13,18 +11,9 @@ type PokemonParams = {
 export default function OnePokemonPage() {
   const { name } = useParams<PokemonParams>()
 
-  const [pokemon, setPokemon] = useState<PokemonObject>({} as PokemonObject)
-  const [isMounted, setIsMounted] = useState<boolean>(false)
-
   const urlImage = `https://img.pokemondb.net/artwork/large/${name}.jpg`
 
-  useEffect(() => {
-    ;(async () => {
-      const pokemon = await onePokemonService({ name })
-      setPokemon(pokemon)
-      setIsMounted(true)
-    })()
-  }, [])
+  const { pokemon, isMounted } = usePokemon({ name })
 
   if (!isMounted) {
     return <h1>Loading...</h1>
