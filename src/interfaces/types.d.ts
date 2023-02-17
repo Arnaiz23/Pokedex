@@ -37,3 +37,9 @@ export interface PokemonObject {
   stats: Stats[]
   weight: number
 }
+
+// POKEMONS INTERFACE ARRAY
+export interface PokemonArray {
+  name: string
+  url: string
+}

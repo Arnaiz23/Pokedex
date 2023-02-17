@@ -1,4 +1,4 @@
-import { PokemonObject } from "@/interfaces/types"
+import { PokemonArray, PokemonObject } from "@/interfaces/types"
 
 interface onePokemonProps {
   name?: string
@@ -24,5 +24,18 @@ export const onePokemonService = async ({ name }: onePokemonProps) => {
     return pokemon
   } catch (err) {
     throw new Error("Error requesting pokemon")
+  }
+}
+
+export const getPokemons = async (): Promise<PokemonArray[]> => {
+  try {
+    const response = await fetch(
+      `${import.meta.env.VITE_API_URL}pokemon?limit=14&offset=0`
+    )
+    const json = await response.json()
+
+    return json.results
+  } catch (err) {
+    throw new Error("Error requesting pokemons")
   }
 }
