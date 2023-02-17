@@ -3,22 +3,18 @@ import { useParams } from "react-router-dom"
 import GridContainerData from "@/components/GridContainerData"
 import ContainerPokemonData from "@/components/ContainerPokemonData"
 import usePokemon from "@/hooks/usePokemon"
+import { PokemonObject } from "@/interfaces/types"
 
 type PokemonParams = {
   name: string
 }
 
-export default function OnePokemonPage() {
-  const { name } = useParams<PokemonParams>()
+interface PokemonProps {
+  pokemon: PokemonObject
+  urlImage: string
+}
 
-  const urlImage = `https://img.pokemondb.net/artwork/large/${name}.jpg`
-
-  const { pokemon, isMounted } = usePokemon({ name })
-
-  if (!isMounted) {
-    return <h1>Loading...</h1>
-  }
-
+function Pokemon({ pokemon, urlImage }: PokemonProps) {
   return (
     <div className="flex flex-col justify-evenly items-center gap-20 text-white w-full md:w-[80%] mx-auto pb-5">
       <h1 className="text-4xl capitalize">
@@ -53,5 +49,23 @@ export default function OnePokemonPage() {
         ))}
       </GridContainerData>
     </div>
+  )
+}
+
+function NoPokemon() {
+  return <h1>Loading...</h1>
+}
+
+export default function OnePokemonPage() {
+  const { name } = useParams<PokemonParams>()
+
+  const urlImage = `https://img.pokemondb.net/artwork/large/${name}.jpg`
+
+  const { pokemon, isMounted } = usePokemon({ name })
+
+  return isMounted ? (
+    <Pokemon pokemon={pokemon} urlImage={urlImage} />
+  ) : (
+    <NoPokemon />
   )
 }
