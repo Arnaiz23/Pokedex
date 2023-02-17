@@ -10,6 +10,10 @@ const router = createBrowserRouter([
     element: <AllPokemonsPage />,
   },
   {
+    path: "/pokemon",
+    element: <AllPokemonsPage />,
+  },
+  {
     path: "/pokemon/:name",
     element: <OnePokemonPage />,
   },

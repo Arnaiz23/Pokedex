@@ -19,7 +19,10 @@ export default function ContainerPokemonData({ pokemon }: Props) {
       </div>
       <div className="flex justify-evenly items-center gap-5 flex-wrap">
         {pokemon.types.map((type) => (
-          <span className="bg-white rounded-full py-1 px-5 text-black">
+          <span
+            className="bg-white rounded-full py-1 px-5 text-black"
+            key={type.type.name}
+          >
             {type.type.name}
           </span>
         ))}
