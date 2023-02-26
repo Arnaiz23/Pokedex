@@ -1,13 +1,10 @@
 import CardPokemon from "@/components/CardPokemon"
 import usePokemons from "@/hooks/usePokemons"
 import { PokemonArray } from "@/interfaces/types"
+import Loading from "@/components/Loading"
 
 interface PokemonsProps {
   pokemons: PokemonArray[]
-}
-
-function LoadingPokemons() {
-  return <h1>Loading...</h1>
 }
 
 function Pokemons({ pokemons }: PokemonsProps) {
@@ -23,5 +20,5 @@ function Pokemons({ pokemons }: PokemonsProps) {
 export default function AllPokemonsPage() {
   const { pokemons, loading } = usePokemons()
 
-  return loading ? <LoadingPokemons /> : <Pokemons pokemons={pokemons} />
+  return loading ? <Loading /> : <Pokemons pokemons={pokemons} />
 }

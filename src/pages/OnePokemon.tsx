@@ -4,6 +4,7 @@ import GridContainerData from "@/components/GridContainerData"
 import ContainerPokemonData from "@/components/ContainerPokemonData"
 import usePokemon from "@/hooks/usePokemon"
 import { PokemonObject } from "@/interfaces/types"
+import Loading from "@/components/Loading"
 
 type PokemonParams = {
   name: string
@@ -52,10 +53,6 @@ function Pokemon({ pokemon, urlImage }: PokemonProps) {
   )
 }
 
-function NoPokemon() {
-  return <h1>Loading...</h1>
-}
-
 export default function OnePokemonPage() {
   const { name } = useParams<PokemonParams>()
 
@@ -66,6 +63,6 @@ export default function OnePokemonPage() {
   return isMounted ? (
     <Pokemon pokemon={pokemon} urlImage={urlImage} />
   ) : (
-    <NoPokemon />
+    <Loading />
   )
 }
