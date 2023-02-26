@@ -5,6 +5,7 @@ import ContainerPokemonData from "@/components/ContainerPokemonData"
 import usePokemon from "@/hooks/usePokemon"
 import { PokemonObject } from "@/interfaces/types"
 import Loading from "@/components/Loading"
+import ButtonHome from "@/components/ButtonHome"
 
 type PokemonParams = {
   name: string
@@ -18,6 +19,7 @@ interface PokemonProps {
 function Pokemon({ pokemon, urlImage }: PokemonProps) {
   return (
     <div className="flex flex-col justify-evenly items-center gap-20 text-white w-full md:w-[80%] mx-auto pb-5">
+      <ButtonHome />
       <h1 className="text-4xl capitalize">
         {pokemon.name} #{pokemon.id}
       </h1>

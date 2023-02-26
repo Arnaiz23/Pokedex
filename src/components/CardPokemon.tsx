@@ -19,7 +19,7 @@ export default function CardPokemon({ url, name }: Props) {
         />
       </picture>
       <h2 className="capitalize text-2xl text-gray-700 font-bold">{name}</h2>
-      <Link to={`/pokemon/${name}`}>
+      <Link to={`/pokemon/${name}`} title={`Go to ${name} page`}>
         <button className="rounded-full p-1 px-3 text-white text-sm shadow shadow-black bg-gray-700">
           Ver Pokemon
         </button>
