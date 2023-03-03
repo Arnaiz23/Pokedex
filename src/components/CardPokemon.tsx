@@ -10,17 +10,19 @@ export default function CardPokemon({ url, name }: Props) {
     `https://img.pokemondb.net/artwork/large/${name}.jpg`
 
   return (
-    <div className="w-52 rounded-md grid grid-rows-[3fr,_1fr,_1fr] place-items-center py-3 h-[350px] bg-white">
-      <picture className="max-h-52 overflow-hidden">
+    <div className="w-52 rounded-md grid grid-rows-[3fr,_1fr,_1fr] justify-items-center  pb-3 h-[350px] dark:bg-white bg-gray-700 overflow-hidden">
+      <picture className="max-h-52 overflow-hidden min-h-[195px] bg-white mb-1 flex justify-center items-center">
         <img
           src={urlImage(name)}
           alt={`front of ${name}`}
           className="w-full object-cover"
         />
       </picture>
-      <h2 className="capitalize text-2xl text-gray-700 font-bold">{name}</h2>
+      <h2 className="capitalize text-2xl dark:text-gray-700 text-white font-bold">
+        {name}
+      </h2>
       <Link to={`/pokemon/${name}`} title={`Go to ${name} page`}>
-        <button className="rounded-full p-1 px-3 text-white text-sm shadow shadow-black bg-gray-700">
+        <button className="rounded-full p-1 px-3 dark:text-white text-black text-sm shadow shadow-black dark:bg-gray-700 bg-gray-200">
           Ver Pokemon
         </button>
       </Link>

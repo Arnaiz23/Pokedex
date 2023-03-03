@@ -7,14 +7,14 @@ interface Props {
 export default function ContainerPokemonData({ pokemon }: Props) {
   return (
     <div className="flex flex-col justify-evenly items-center gap-10 w-[30%] min-w-[90%] sm:min-w-[400px]">
-      <div className="w-full bg-[#30A7D7] min-h-[114px] rounded-xl flex justify-evenly items-center gap-x-10 gap-y-5 flex-wrap p-2">
+      <div className="w-full dark:bg-[#30A7D7] bg-purple-900 min-h-[114px] rounded-xl flex justify-evenly items-center gap-x-10 gap-y-5 flex-wrap p-2 dark:text-black text-white">
         <div className="flex flex-col justify-evenly items-center text-xl">
           <p className="font-bold">Height</p>
-          <p className="text-black">{pokemon.height * 10} cm</p>
+          <p>{pokemon.height * 10} cm</p>
         </div>
         <div className="flex flex-col justify-evenly items-center text-xl">
           <p className=" font-bold">Weight</p>
-          <p className="text-black">{(pokemon.weight * 100) / 1000} kg</p>
+          <p>{(pokemon.weight * 100) / 1000} kg</p>
         </div>
       </div>
       <div className="flex justify-evenly items-center gap-5 flex-wrap">
