@@ -4,6 +4,7 @@ import AllPokemonsPage from "@/pages/AllPokemons"
 import PokemonTitle from "./components/Icons/PokemonTitle"
 import OnePokemonPage from "./pages/OnePokemon"
 import ToggleTheme from "./components/ToggleTheme"
+import ButtonUp from "./components/ButtonUp"
 
 const router = createBrowserRouter([
   {
@@ -26,6 +27,7 @@ function App() {
       <ToggleTheme />
       <PokemonTitle />
       <RouterProvider router={router} />
+      <ButtonUp />
     </div>
   )
 }
