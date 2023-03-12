@@ -9,11 +9,16 @@ interface PokemonsProps {
 
 function Pokemons({ pokemons }: PokemonsProps) {
   return (
-    <div className="gap-y-14 gap-x-5 grid grid-cols-[repeat(auto-fit,_minmax(200px,_1fr))] place-items-center w-[80%] mx-auto">
-      {pokemons.map(({ name, url }) => (
-        <CardPokemon url={url} key={name} name={name} />
-      ))}
-    </div>
+    <>
+      <div className="gap-y-14 gap-x-5 grid grid-cols-[repeat(auto-fit,_minmax(200px,_1fr))] place-items-center w-[80%] mx-auto">
+        {pokemons.map(({ name, url }) => (
+          <CardPokemon url={url} key={name} name={name} />
+        ))}
+      </div>
+      <button className="p-2 dark:bg-blue-500 bg-gray-700 text-white dark:text-black rounded-full mt-[-25px]">
+        More pokemons
+      </button>
+    </>
   )
 }
 
