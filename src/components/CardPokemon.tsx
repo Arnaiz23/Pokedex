@@ -1,17 +1,16 @@
 import { Link } from "react-router-dom"
 
 interface Props {
-  url: string
   name: string
 }
 
-export default function CardPokemon({ url, name }: Props) {
+export default function CardPokemon({ name }: Props) {
   const urlImage = (name: string) =>
     `https://img.pokemondb.net/artwork/large/${name}.jpg`
 
   return (
-    <div className="w-52 rounded-md grid grid-rows-[3fr,_1fr,_1fr] justify-items-center  pb-3 h-[350px] dark:bg-white bg-gray-700 overflow-hidden">
-      <picture className="max-h-52 overflow-hidden min-h-[195px] bg-white mb-1 flex justify-center items-center">
+    <article className="w-52 rounded-md grid grid-rows-[3fr,_1fr,_1fr] justify-items-center  pb-3 h-[350px] dark:bg-white bg-gray-700 overflow-hidden">
+      <picture className="max-h-52 overflow-hidden min-h-[195px] bg-white mb-1 flex justify-center items-center dark:border dark:border-b-black">
         <img
           src={urlImage(name)}
           alt={`front of ${name}`}
@@ -26,6 +25,6 @@ export default function CardPokemon({ url, name }: Props) {
           Ver Pokemon
         </button>
       </Link>
-    </div>
+    </article>
   )
 }
