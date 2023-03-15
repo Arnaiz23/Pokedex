@@ -28,7 +28,7 @@ function Pokemon({ pokemon, urlImage }: PokemonProps) {
           <img
             src={urlImage}
             alt={`pokemon ${pokemon.name}`}
-            className="w-96"
+            className="w-96 max-h-[350px] object-contain"
           />
         </picture>
 
