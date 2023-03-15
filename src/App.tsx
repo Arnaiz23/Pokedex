@@ -24,10 +24,14 @@ const router = createBrowserRouter([
 function App() {
   return (
     <div className="flex flex-col justify-center items-center gap-20 min-h-screen w-full p-5 dark:bg-[#242424] bg-[#DEE4E7]">
-      <ToggleTheme />
-      <PokemonTitle />
-      <RouterProvider router={router} />
-      <ButtonUp />
+      <header>
+        <ToggleTheme />
+        <PokemonTitle />
+      </header>
+      <main className="w-full">
+        <RouterProvider router={router} />
+        <ButtonUp />
+      </main>
     </div>
   )
 }

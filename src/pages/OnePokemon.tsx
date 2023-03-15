@@ -23,7 +23,7 @@ function Pokemon({ pokemon, urlImage }: PokemonProps) {
       <h1 className="text-4xl capitalize">
         {pokemon.name} #{pokemon.id}
       </h1>
-      <div className="flex justify-center items-center gap-10 w-full flex-wrap">
+      <article className="flex justify-center items-center gap-10 w-full flex-wrap">
         <picture className="rounded-sm overflow-hidden">
           <img
             src={urlImage}
@@ -33,7 +33,7 @@ function Pokemon({ pokemon, urlImage }: PokemonProps) {
         </picture>
 
         <ContainerPokemonData pokemon={pokemon} />
-      </div>
+      </article>
 
       <GridContainerData title="Stats">
         {pokemon.stats.map((stat) => (
