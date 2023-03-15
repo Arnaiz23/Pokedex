@@ -18,7 +18,7 @@ interface PokemonProps {
 
 function Pokemon({ pokemon, urlImage }: PokemonProps) {
   return (
-    <div className="flex flex-col justify-evenly items-center gap-20 dark:text-white text-black w-full md:w-[80%] mx-auto pb-5">
+    <main className="flex flex-col justify-evenly items-center gap-20 dark:text-white text-black w-full md:w-[80%] mx-auto pb-5">
       <ButtonHome />
       <h1 className="text-4xl capitalize">
         {pokemon.name} #{pokemon.id}
@@ -51,7 +51,7 @@ function Pokemon({ pokemon, urlImage }: PokemonProps) {
           </p>
         ))}
       </GridContainerData>
-    </div>
+    </main>
   )
 }
 
