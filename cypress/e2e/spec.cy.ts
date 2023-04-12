@@ -16,9 +16,14 @@ describe('Pokedex test', () => {
   it('Visit the page and load more pokemons', () => {
     cy.visit(URL)
 
+    // Check if exists 14 cards
+    cy.get('div > article').should('have.length', 14)
 
     // Click an element. Load more pokemons
     cy.contains('More pokemons').click()
+
+    // Check if exists 28 cards
+    cy.get('div > article').should('have.length', 28)
   })
 
   it('Visit the page, go to a specific pokemon page and check that this page is working correctly', () => {
@@ -55,4 +60,38 @@ describe('Pokedex test', () => {
   })
 
   // Check if the light or dark theme is running correctly. Search the button, click and check if the body has the class.
+  // Get the page, delete the dark theme, click the dark button for change the dark theme and check if the page is dark
+  it('Check if the dark theme works correctly', () => {
+    cy.visit(URL)
+
+    cy.get('html').should('have.class', 'dark')
+
+    const themeDarkButton = cy.get('[data-theme="dark"]')
+
+    themeDarkButton.click()
+    // cy.get('html').invoke('toggleClass', 'dark')
+
+    cy.get('html').should('not.have.class', 'dark')
+
+    themeDarkButton.click()
+
+    cy.get('html').should('have.class', 'dark')
+  })
+
+  it('Check if the light theme works correctly', () => {
+    cy.visit(URL)
+
+    cy.get('html').should('have.class', 'dark')
+
+    const themeLightButton = cy.get('[data-theme="light"]')
+
+    themeLightButton.click()
+    // cy.get('html').invoke('toggleClass', 'dark')
+
+    cy.get('html').should('not.have.class', 'dark')
+
+    themeLightButton.click()
+
+    cy.get('html').should('have.class', 'dark')
+  })
 })

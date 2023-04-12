@@ -17,6 +17,7 @@ export default function ToggleTheme() {
           }`}
           onClick={toggleTheme}
           key={actualTheme}
+	  data-theme={actualTheme}
         >
           {actualTheme === "light" ? <SunIcon /> : <MoonIcon />}
         </button>
