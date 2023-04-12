@@ -2,19 +2,14 @@ import CardPokemon from "@/components/CardPokemon"
 import usePokemons from "@/hooks/usePokemons"
 import { PokemonArray } from "@/interfaces/types"
 import Loading from "@/components/Loading"
-import { useEffect, useState } from "react"
+import { useState } from "react"
 
 interface PokemonsProps {
   pokemons: PokemonArray[]
-  offset: number
   incrementOffset: () => void
 }
 
-function Pokemons({ pokemons, offset, incrementOffset }: PokemonsProps) {
-
-  useEffect(() => {
-    console.log(offset)
-  }, [offset])
+function Pokemons({ pokemons, incrementOffset }: PokemonsProps) {
 
   return (
     <main className="w-full flex justify-center items-center flex-col gap-12">
@@ -36,5 +31,5 @@ export default function AllPokemonsPage() {
 
   const incrementOffset = () => setOffset(offset + 14)
 
-  return loading ? <Loading /> : <Pokemons pokemons={pokemons} offset={offset} incrementOffset={incrementOffset} />
+  return loading ? <Loading /> : <Pokemons pokemons={pokemons} incrementOffset={incrementOffset} />
 }
