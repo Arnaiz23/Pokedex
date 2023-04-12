@@ -28,16 +28,13 @@ export const onePokemonService = async ({ name }: onePokemonProps) => {
 }
 
 export const getPokemons = async ({offset}: {offset: number}): Promise<PokemonArray[]> => {
-  let pokemonsArray = localStorage.getItem("pokemons") && offset > 0 ? JSON.parse(localStorage.getItem("pokemons")) : []
-  //let pokemonsArray: PokemonArray[] = []
+  let pokemonsArray: PokemonArray[] = localStorage.getItem("pokemons") && offset > 0 ? JSON.parse(localStorage.getItem("pokemons") || '{}') : []
 
   try {
     const response = await fetch(
       `${import.meta.env.VITE_API_URL}pokemon?limit=14&offset=${offset}`
     )
     const json = await response.json()
-
-    console.log({pokemonsArray})
 
     json.results.forEach((pokemon: PokemonArray) => pokemonsArray.push(pokemon))
 
