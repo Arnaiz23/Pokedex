@@ -27,14 +27,18 @@ export const onePokemonService = async ({ name }: onePokemonProps) => {
   }
 }
 
-export const getPokemons = async (): Promise<PokemonArray[]> => {
+export const getPokemons = async ({offset}: {offset: number}): Promise<PokemonArray[]> => {
+  let pokemonsArray: PokemonArray[] = []
+
   try {
     const response = await fetch(
-      `${import.meta.env.VITE_API_URL}pokemon?limit=14&offset=0`
+      `${import.meta.env.VITE_API_URL}pokemon?limit=14&offset=${offset}`
     )
     const json = await response.json()
 
-    return json.results
+    json.results.forEach((pokemon: PokemonArray) => pokemonsArray.push(pokemon))
+
+    return pokemonsArray
   } catch (err) {
     throw new Error("Error requesting pokemons")
   }
