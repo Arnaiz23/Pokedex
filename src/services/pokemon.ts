@@ -28,7 +28,7 @@ export const onePokemonService = async ({ name }: onePokemonProps) => {
 }
 
 export const getPokemons = async ({offset}: {offset: number}): Promise<PokemonArray[]> => {
-  let pokemonsArray = localStorage.getItem("pokemons") ? JSON.parse(localStorage.getItem("pokemons")) : []
+  let pokemonsArray = localStorage.getItem("pokemons") && offset > 0 ? JSON.parse(localStorage.getItem("pokemons")) : []
   //let pokemonsArray: PokemonArray[] = []
 
   try {
