@@ -499,7 +499,6 @@ const SvgComponent = (props: SVGProps<SVGSVGElement>) => (
         fillOpacity: 1,
         stroke: "none",
         fontFamily: "Arial",
-        InkscapeFontSpecification: "Arial",
       }}
     >
       <path
