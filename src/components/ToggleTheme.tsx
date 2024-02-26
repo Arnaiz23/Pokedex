@@ -17,7 +17,8 @@ export default function ToggleTheme() {
           }`}
           onClick={toggleTheme}
           key={actualTheme}
-	  data-theme={actualTheme}
+          data-theme={actualTheme}
+          aria-label={actualTheme}
         >
           {actualTheme === "light" ? <SunIcon /> : <MoonIcon />}
         </button>

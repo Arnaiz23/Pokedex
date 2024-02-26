@@ -10,11 +10,11 @@ export default function CardPokemon({ name }: Props) {
 
   return (
     <article className="w-52 rounded-md grid grid-rows-[3fr,_1fr,_1fr] justify-items-center  pb-3 h-[350px] dark:bg-white bg-gray-700 overflow-hidden">
-      <picture className="max-h-52 overflow-hidden min-h-[195px] bg-white mb-1 flex justify-center items-center dark:border dark:border-b-black">
+      <picture className="max-h-52 overflow-hidden min-h-[195px] bg-white mb-1 flex justify-center items-center dark:border dark:border-b-black aspect-square">
         <img
           src={urlImage(name)}
           alt={`front of ${name}`}
-          className="w-full object-cover"
+          className="w-full object-cover aspect-square"
         />
       </picture>
       <h2 className="capitalize text-2xl dark:text-gray-700 text-white font-bold">

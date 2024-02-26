@@ -33,7 +33,7 @@ export default function ButtonUp() {
 
   return (
     <span className={`fixed bottom-2 right-2 p-3 dark:bg-blue-500 bg-gray-700 rounded-full grid items-center dark:text-black text-white ${showButton ? `scale-100` : `scale-0`} transition-transform`}>
-      <button onClick={goUp}>
+      <button onClick={goUp} aria-label="Button-Up">
         <UpArrowIcon />
       </button>
     </span>

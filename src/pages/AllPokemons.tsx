@@ -10,7 +10,6 @@ interface PokemonsProps {
 }
 
 function Pokemons({ pokemons, incrementOffset }: PokemonsProps) {
-
   return (
     <main className="w-full flex justify-center items-center flex-col gap-12">
       <div className="gap-y-14 gap-x-5 grid grid-cols-[repeat(auto-fit,_minmax(200px,_1fr))] place-items-center w-[80%] mx-auto">
@@ -18,7 +17,10 @@ function Pokemons({ pokemons, incrementOffset }: PokemonsProps) {
           <CardPokemon key={name} name={name} />
         ))}
       </div>
-      <button className="p-2 dark:bg-blue-500 bg-gray-700 text-white dark:text-black rounded-full mt-[-25px]" onClick={incrementOffset}>
+      <button
+        className="p-2 dark:bg-blue-500 bg-gray-700 text-white dark:text-black rounded-full mt-[-25px]"
+        onClick={incrementOffset}
+      >
         More pokemons
       </button>
     </main>
@@ -27,9 +29,13 @@ function Pokemons({ pokemons, incrementOffset }: PokemonsProps) {
 
 export default function AllPokemonsPage() {
   const [offset, setOffset] = useState<number>(0)
-  const { pokemons, loading } = usePokemons({offset})
+  const { pokemons, loading } = usePokemons({ offset })
 
   const incrementOffset = () => setOffset(offset + 14)
 
-  return loading ? <Loading /> : <Pokemons pokemons={pokemons} incrementOffset={incrementOffset} />
+  return loading ? (
+    <Loading />
+  ) : (
+    <Pokemons pokemons={pokemons} incrementOffset={incrementOffset} />
+  )
 }
