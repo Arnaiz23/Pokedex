@@ -24,7 +24,7 @@ function Pokemon({ pokemon, urlImage }: PokemonProps) {
         {pokemon.name} #{pokemon.id}
       </h1>
       <article className="flex justify-center items-center gap-10 w-full flex-wrap">
-        <picture className="rounded-sm overflow-hidden">
+        <picture className="rounded-sm overflow-hidden aspect-square">
           <img
             src={urlImage}
             alt={`pokemon ${pokemon.name}`}
